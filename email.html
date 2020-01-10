@@ -1,0 +1,74 @@
+from: mharmis@adobe.com
+email_server: inner-relay-1.corp.adobe.com
+report_email_list:
+  - prakakum@adobe.com
+
+schedule:
+  A: 2019-02-12 starting 06:00 P.M. PDT for 8 hours
+  B: 2019-02-14 starting 06:00 P.M. PDT for 8 hours
+  C: 2019-02-18 starting 06:00 P.M. PDT for 8 hours
+
+reminder:
+  A:
+    - 2020-01-10
+    - 2019-07-27
+    - 2019-08-06
+  B:
+    - 2020-01-10
+    - 2019-07-27
+    - 2019-08-06
+  C:
+    - 2019-01-25
+    - 2019-07-27
+    - 2019-08-06
+
+subject: '***Action Required*** Windows Patching General Compute Notification'
+patch_info_file: compute.csv
+
+Message:
+    <div><img border=0 width=963 height=232 src="cid:compute_banner"></div>
+    <p class=MsoNormal style='margin-left:100.0pt;text-indent:100.0pt;font-size:20px'><b><span lang=EN-US style='color:blue;mso-ansi-language:EN-US'><u>Q1 2020 - OS Update Schedule for General Compute <o:p></o:p></span></u></b></p>
+    <p class=MsoNormal>Dear User,</p>
+    <p class=MsoNormal>As a part of Q1 maintenance cycle, listed VM/s will be updated (Kernel & Security patch) and rebooted as per the given schedule.<o:p></o:p></p>
+    <p class=MsoNormal>You are receiving this communication as you are noted as the Primary/Secondary owner of one or more VMs listed.<o:p></o:p></p>
+    <p class=MsoNormal><b><span lang=EN-US style='color:blue;mso-ansi-language:EN-US'>Impact<o:p></o:p></span></b></p>
+    <p class=MsoNormal>Listed VM/s will be rebooted as per the scheduled maintenance window of the patch group mentioned in the table below, which is <u>assigned randomly</u>.</p>
+    <adobe_server_list> </adobe_server_list>
+    <p class=MsoNormal><b><span lang=EN-US style='color:black;mso-ansi-language:EN-US'>Patch Group Schedule (PST) -<o:p></o:p></span></b></p>
+
+    <!--  <div><b> The possible choices for Windows (in PST):</b></div></span> -->
+    Group A &emsp; Windows &emsp; Tuesday, January 28, 2020 between 1800 to 0600 hrs</br>
+    Group B &emsp; Windows &emsp; Tuesday, February 04, 2020 between 1800 to 0600 hrs</br>
+    Group C &emsp; Windows &emsp; Tuesday, February 11, 2020 between 1800 to 0600 hrs</br>
+
+    <!-- <div><b> The possible choices for Linux (in PST):</b></div></span> -->
+    Group A &emsp; Linux &emsp;&emsp;&ensp; Monday, January 27, 2020 between 1800 to 0600 hrs</br>
+    Group B &emsp; Linux &emsp;&emsp;&ensp; Monday, February 03, 2020 between 1800 to 0600 hrs</br>
+    Group C &emsp; Linux &emsp;&emsp;&ensp; Monday, February 10, 2020 between 1800 to 0600 hrs</br>
+    </div>
+
+    <p class=MsoNormal> &nbsp </p>
+    <p class=MsoNormal><b><span lang=EN-US style='color:#2962ff;mso-ansi-language:EN-US'>Action Required<o:p></o:p></span></b></p>
+    <ul type=disc>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'> Please review the patch group/maintenance window of your VM/s & reach out to ComputeTeam@adobe.com for any assistance<o:p></o:p></span>
+
+    </li>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>If you are not the correct owner of the VM, please reach out to ComputeTeam@adobe.com requesting update of ownership information.<o:p></o:p></span></li>
+    </ul>
+    <p><b><span lang=EN-US style='color:blue;mso-ansi-language:EN-US'>User Best Practices </span></b><span lang=EN-US style='color:black;mso-ansi-language:EN-US'> <o:p></o:p></span></p>
+    <ul type=disc>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>If your application is in HA, pl ensure VMs are <b><u>distributed across Patch Groups</u></b> to avoid service disruption</br><o:p></o:p></span></li>
+
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'> OS package should be <b><u>version locked</u></b> if application has a hard dependency on some specific OS package <o:p></o:p></span></li>
+
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>Applications should be configured to <b><u>startup/shutdown gracefully</u></b> at boot/power down of a VM. <o:p></o:p></span></li>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>Please disable application monitoring & <b><u>notify NOC</u></b> if your application is CSO eligible, to <b><u>avoid unnecessary CSO</u></b>. <o:p></o:p></span></li>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>If you no longer need this VM, please submit a <b><u>decommission</u></b> request in ITC Portal. <o:p></o:p></span></li>
+
+    </ul>
+    <div> <b><u>Please note,</u></b> <font color='red'>NO RESPONSE</font> to this communication will be considered as <font color='red'>APPROVAL</font> for Compute team to go ahead with this update activity. </b></div>
+    <div> Compute team <b><u>will not be responsible for any CSO</u></b> caused due to not adhering to the Best Practices listed. </b></div>
+    <br>
+    <div>Thanks</div>
+    <div>Compute Team</div>
+    <div>compute-notify@adobe.com</div>
