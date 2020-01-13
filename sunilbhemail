@@ -1,0 +1,73 @@
+from: mharmis@adobe.com
+email_server: inner-relay-1.corp.adobe.com
+report_email_list:
+  - prakakum@adobe.com
+
+schedule:
+  A: 2019-02-12 starting 06:00 P.M. PDT for 8 hours
+  B: 2019-02-14 starting 06:00 P.M. PDT for 8 hours
+  C: 2019-02-18 starting 06:00 P.M. PDT for 8 hours
+
+reminder:
+  A:
+    - 2020-01-10
+    - 2019-07-27
+    - 2019-08-06
+  B:
+    - 2020-01-13
+    - 2019-07-27
+    - 2019-08-06
+  C:
+    - 2019-01-25
+    - 2019-07-27
+    - 2019-08-06
+
+subject: '***Action Required*** Windows Patching General Compute Notification'
+patch_info_file: compute.csv
+
+Message: |
+
+    <div><img border=0 width=963 height=232 src="cid:compute_banner"></div>
+    <p class=MsoNormal style='margin-left:68.0pt;text-indent:100.0pt;font-size:25px'><b><span lang=EN-US style='color:#0066CC;mso-ansi-language:EN-US'><u>Q1 2020 - OS Update Schedule for General Compute <o:p></o:p></span></u></b></p>
+    <p class=MsoNormal>Dear User,</p>
+    <p class=MsoNormal>As per Adobe Security Guidelines, it is mandatory to update OS at least once every quarter. Following Q1 maintenance cycle, listed VM/s will be updated (Kernel<o:p></o:p></p>
+    <p class=MsoNormal>& Security patch) as per the given schedule. You are receiving this communication as you are noted as the Primary/Secondary owner of one or more VMs listed.</p>
+    <p class=MsoNormal><b><span lang=EN-US style='color:#0066CC;font-size:20px;mso-ansi-language:EN-US'><u>Impact</u><o:p></o:p></span></b></p>
+    <p class=MsoNormal>Listed VM/s will be rebooted as per the planned maintenance window of the <u>patch group</u> mentioned in the below schedule.</p>
+    <adobe_server_list> </adobe_server_list>
+    <p class=MsoNormal><b><span lang=EN-US style='color:black;font-size:20px;mso-ansi-language:EN-US'>Patch Group Schedule (PST)<o:p></o:p></span></b></p>
+    <p class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'> </span></p>
+
+    <table>
+    <tr> <td>Group A &emsp; Windows &emsp; Tuesday</td><td>January 28</td><td>2020 between 1800 to 0600 hrs</td> </tr><tr>
+    <td>Group B &emsp; Windows &emsp; Tuesday</td><td>February  04</td><td>2020 between 1800 to 0600 hrs</td> </tr><tr>
+    <td>Group C &emsp; Windows &emsp; Tuesday</td><td>February  11</td><td>2020 between 1800 to 0600 hrs</td> </tr><tr>
+    <td>Group D &emsp; Windows &emsp; Sunday</td><td>February  16</td><td>2020 between 1800 to 0600 hrs</td> </tr><tr>
+    <td>Group A &emsp; Linux &emsp; Monday</td><td>January 27</td><td>2020 between 1800 to 0600 hrs</td> </tr><tr>
+    <td>Group B &emsp; Linux &emsp; Monday</td><td>February  03</td><td>2020 between 1800 to 0600 hrs</td> </tr><tr>
+    <td>Group C &emsp; Linux &emsp; Monday</td><td>February  10</td><td>2020 between 1800 to 0600 hrs</td> </tr><tr>
+    <td>Group D &emsp; Linux &emsp; Sunday</td><td>February  16</td><td>2020 between 1800 to 0600 hrs</td> </tr>
+    </table>
+    <br>
+    <table><tr><td><b><span lang=EN-US style='color:#0066CC;font-size:20px;mso-ansi-language:EN-US'><u>Action Required</u></span></b></td></tr>
+    <br>
+    <tr><td>
+    <ul type=disc>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'> Please review the patch group/maintenance window of your VM/s & reach out to ComputeTeam@adobe.com for any assistance.<o:p></o:p></span>
+    </li>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>If you are not the correct owner of the VM, please reach out to ComputeTeam@adobe.com requesting update of ownership information.<o:p></o:p></span></li>
+    </ul></td>
+    </tr></table>
+    <table>
+    <tr><td style='color:#0066CC;font-size:20px;mso-ansi-language:EN-US'><b><u>User Best Practices</u></b></td></tr>
+    <tr></td>
+    <ul type=disc>
+    <li><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>If your application is in HA, Please ensure VMs are <b><u>distributed across Patch Groups</u></b> to avoid service disruption.</br></span></li>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'> OS package should be <a href='https://wiki.corp.adobe.com/pages/viewpage.action?spaceKey=CSW&title=Version+Lock'> <u><b>version locked</u></b></a></font> if application has a specific dependency on some specific OS package. <o:p></o:p></span></li>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>Applications should be configured to <b><u>startup/shutdown gracefully</u></b> at boot/power down of a VM. <o:p></o:p></span></li>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>Please disable application monitoring & <b><u>notify NOC</u></b> if your application is CSO eligible, to <b><u>avoid unnecessary CSO</u></b>. <o:p></o:p></span></li>
+    <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;mso-list:l2 level1 lfo3;tab-stops:list 36.0pt'><span lang=EN-US style='mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US'>If you no longer need this VM, please submit a <b><u>decommission</u></b> request in ITC Portal. <o:p></o:p></span></li>
+    </ul>
+    </td></tr>
+    </table>
+    <table> <tr><td>Please note,<b><u> NO RESPONSE </b></u>to this communication will be considered as <u><b>APPROVAL</u></b> for Compute team to go ahead with this update activity.</td></tr> <tr><td> Any CSO opened during the change window due to not adhering to the Best Practices listed will be assigned to respective application team. </td></tr> </table> <br> <div>Thanks,</div> <div>Compute Team</div>
