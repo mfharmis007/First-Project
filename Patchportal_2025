@@ -1,0 +1,109 @@
+import os
+import requests
+import json
+import pprint
+import string
+import time
+import random
+import datetime
+
+#### These urls can only be used for stage patching portal######
+stg_host_url="https://itcapi.paas-stg.corp.adobe.com/patchingapi/servers?hostname="
+stg_add_url="https://itcapi.paas-stg.corp.adobe.com/patchingapi/servers"
+stg_id_url="https://itcapi.paas-stg.corp.adobe.com/patchingapi/servers?id="
+stg_org_url="https://itcapi.paas-stg.corp.adobe.com/patchingapi/orgs?"
+pheader = {
+            "Authorization": "Basic YTNmNGIwMmYzYzA2ZWRmYzBlNmQ5NTQyOTI3NGY0MGE6anNjI3kyI1JhJCNjJFNzKnVH",
+                        "Content-Type": "application/json"
+                                 }
+
+#### These urls can only be used for production patching portal######
+prod_add_url="https://itcapi.paas.corp.adobe.com/patchingapi/servers"
+prod_id_url="https://itcapi.paas.corp.adobe.com/patchingapi/servers?id="
+prod_org_url = "https://itcapi.paas.corp.adobe.com/patchingapi/orgs?"
+prod_host_url = "https://itcapi.paas.corp.adobe.com/patchingapi/servers?hostname="
+header = {
+            "Authorization": "Basic NmUyZDY1MjM0MmYyMDgwYjQ3Y2RlMmI3ZmY5MmMwZTI6dXN5JGUzJGRhKjRxJG5kI1d0",
+                        "Content-Type": "application/json"
+                                 }
+hostnames=["du1glm319.corp.adobe.com","du1glm321.corp.adobe.com","du1glm323.corp.adobe.com","du1glm320.corp.adobe.com","du1glm324.corp.adobe.com","du1glm322.corp.adobe.com"]
+primary_contact = 'subbulek@adobe.com'
+secondary_contact = 'sbodela@adobe.com'
+landscape ='Production'
+application='Ebook'
+serial_number='-'
+host_type_id='2'
+org_name='IT:WebOps'
+os='Linux'
+#['host_type_id']='2' for virtuals and 4 for physicals
+def create_default_entry(minionid='', **kwargs):
+  '''To be used in salt firstboot to add physical servers in patching portal'''
+  list_ret = []
+  data1={}
+  ret = dict()
+  hosts = hostnames
+  data1['status']='Running'
+  data1['project_id']='123456'
+  data1['patch_group']='A'
+  data1['patch_type_id']='2'
+  data1['comments']='x'
+  data1['host_type_id']='2'
+  data1['primary_contact']= primary_contact
+  data1['secondary_contact']= secondary_contact
+  data1['landscape']=landscape
+  data1['org_name']= org_name
+  data1['application']=application
+  data1['os']=os
+  for host in hosts:
+    server_id= randomStringDigits()+'-'+datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    data1['server_id']=server_id
+    data1['hostname']=host
+    if check_host_record(host)=='true':
+      print("Host already exist")
+    else:
+      print(add_host(data1))
+  return ''
+    
+def randomStringDigits(stringLength=8):
+    """Generate a random string of letters and digits """
+    your_letters='000XXX'
+    lettersAndDigits = string.ascii_letters + your_letters + string.digits
+    return ''.join(random.choice(lettersAndDigits) for i in range(stringLength))
+
+def check_host_record(*argv):
+
+  """Only check in host exist in prod portal"""
+  for arg in argv:
+    Responce='false'
+    minion_url = prod_host_url+arg
+    r = requests.get(minion_url, headers=header)
+    if r.ok:
+      Responce='true'
+      print('Host already exist in patchingdb '+arg)
+    return Responce
+
+def add_host(data):
+  '''Adding server in patching portal using data as arg'''
+  r= requests.post(prod_add_url, json=data, headers=header)
+  if (r.status_code)==200:
+    print('Host added successfully')
+
+  else:
+    print('Unable to add host')
+  return r.text
+
+
+
+def delete_host(*argv):
+  """Delete existing host record from patching portal"""
+  for arg in argv:
+    dict1=get_host_record(arg)
+    delete_url=prod_id_url+(dict1['server_id'])
+    print('Deleting existing record for '+arg+'....')
+    r= requests.delete(delete_url, headers=header)
+  return r.text
+
+check_host_record("du1glm320.corp.adobe.com")
+#create_default_entry()
+#delete_host("du1glm323.corp.adobe.com","du1glm320.corp.adobe.com","du1glm324.corp.adobe.com","du1glm322.corp.adobe.com")
+
